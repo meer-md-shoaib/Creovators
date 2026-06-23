@@ -1,0 +1,741 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Creovators Club – Presidency University</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#070c18;--bg2:#0c1425;--card:#0f1a2e;--brd:#1a2840;--org:#f97316;--teal:#14b8a6;--amb:#fb923c;--txt:#f1f5f9;--mut:#94a3b8;--dim:#475569;--r:12px;--t:.3s ease}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',system-ui,sans-serif;overflow-x:hidden}
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(7,12,24,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--brd)}
+.nc{max-width:1200px;margin:0 auto;display:flex;align-items:center;height:62px;padding:0 1.5rem;gap:1.5rem}
+.brand{display:flex;align-items:center;gap:.55rem;font-weight:900;font-size:.95rem;letter-spacing:.06em;text-decoration:none;color:var(--txt);cursor:pointer;flex-shrink:0}
+.brand svg{width:34px;height:34px}
+.nl{display:flex;gap:1.2rem;list-style:none;margin-left:auto}
+.nl a{color:var(--mut);text-decoration:none;font-size:.85rem;font-weight:500;padding:.3rem 0;border-bottom:2px solid transparent;transition:color var(--t),border-color var(--t)}
+.nl a:hover,.nl a.act{color:var(--org);border-color:var(--org)}
+.btn-wa{background:linear-gradient(135deg,var(--org),var(--amb));color:#fff!important;padding:.45rem 1.1rem;border-radius:8px;font-weight:700;font-size:.82rem;text-decoration:none!important;border:none!important;white-space:nowrap;cursor:pointer;transition:opacity var(--t)}
+.btn-wa:hover{opacity:.85}
+.hbg{display:none;background:none;border:none;color:var(--txt);font-size:1.5rem;cursor:pointer;margin-left:auto}
+.mob{display:none;flex-direction:column;gap:.75rem;padding:1rem 1.5rem;background:var(--bg2);border-bottom:1px solid var(--brd)}
+.mob a{color:var(--mut);text-decoration:none;font-weight:500;font-size:.9rem}
+.mob a:hover{color:var(--org)}
+.mob.open{display:flex}
+/* HERO */
+#home{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding:1rem}
+#cvs{position:absolute;inset:0;z-index:0}
+.hi{position:relative;z-index:1;max-width:720px}
+.hbadge{display:inline-block;background:rgba(249,115,22,.12);border:1px solid rgba(249,115,22,.3);color:var(--org);font-size:.75rem;font-weight:700;letter-spacing:.12em;padding:.35rem .9rem;border-radius:20px;margin-bottom:1.3rem;text-transform:uppercase}
+.hlogo{width:110px;height:110px;margin:0 auto 1.3rem;filter:drop-shadow(0 0 20px rgba(249,115,22,.4))}
+.htitle{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;line-height:1;letter-spacing:-.02em;color:#fff;margin-bottom:.4rem}
+.htitle span{background:linear-gradient(135deg,var(--org),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hsub{font-size:clamp(.95rem,2vw,1.15rem);color:var(--mut);margin:.9rem 0 1.8rem;line-height:1.65}
+.hbtns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-p{background:linear-gradient(135deg,var(--org),var(--amb));color:#fff;padding:.75rem 1.8rem;border-radius:10px;font-weight:700;font-size:.95rem;text-decoration:none;transition:transform var(--t),box-shadow var(--t)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(249,115,22,.35)}
+.btn-o{background:transparent;border:2px solid var(--teal);color:var(--teal);padding:.75rem 1.8rem;border-radius:10px;font-weight:700;font-size:.95rem;text-decoration:none;transition:background var(--t)}
+.btn-o:hover{background:rgba(20,184,166,.1)}
+.sdwn{position:absolute;bottom:1.8rem;left:50%;transform:translateX(-50%);color:var(--dim);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;animation:bob 2s infinite}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);background:var(--bg2);border-top:1px solid var(--brd);border-bottom:1px solid var(--brd)}
+.st{padding:1.5rem 1rem;text-align:center;border-right:1px solid var(--brd)}
+.st:last-child{border-right:none}
+.stn{font-size:1.8rem;font-weight:900;background:linear-gradient(135deg,var(--org),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stl{font-size:.75rem;color:var(--mut);font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-top:.2rem}
+/* SECTIONS */
+section:not(#home){padding:5rem 1rem}
+.container{max-width:1200px;margin:0 auto}
+.sl{font-size:.72rem;font-weight:700;letter-spacing:.15em;color:var(--org);text-transform:uppercase;margin-bottom:.4rem}
+.st2{font-size:clamp(1.7rem,3vw,2.4rem);font-weight:800;line-height:1.15;margin-bottom:.8rem}
+.sd{color:var(--mut);max-width:580px;line-height:1.7;margin-bottom:2.5rem;font-size:.93rem}
+/* ABOUT */
+#about{background:var(--bg2)}
+.ag{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem}
+.ac{background:var(--card);border:1px solid var(--brd);border-radius:var(--r);padding:1.75rem;transition:border-color var(--t),transform var(--t)}
+.ac:hover{border-color:var(--org);transform:translateY(-3px)}
+.ac-icon{font-size:1.8rem;margin-bottom:.8rem}
+.ac h3{font-size:1rem;font-weight:700;color:var(--org);margin-bottom:.65rem}
+.ac p{color:var(--mut);line-height:1.7;font-size:.87rem}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.9rem}
+.tag{background:rgba(20,184,166,.08);border:1px solid rgba(20,184,166,.2);color:var(--teal);font-size:.72rem;font-weight:600;padding:.2rem .6rem;border-radius:20px}
+/* EVENTS */
+.etabs{display:flex;gap:.4rem;margin-bottom:1.8rem;background:var(--bg2);border:1px solid var(--brd);border-radius:10px;padding:.3rem;width:fit-content}
+.etab{padding:.45rem 1.3rem;border-radius:7px;border:none;cursor:pointer;font-weight:600;font-size:.85rem;transition:var(--t);background:transparent;color:var(--mut)}
+.etab.act{background:var(--org);color:#fff}
+.eg{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem}
+.ec{background:var(--card);border:1px solid var(--brd);border-radius:var(--r);overflow:hidden;transition:transform var(--t),border-color var(--t)}
+.ec:hover{transform:translateY(-4px);border-color:var(--teal)}
+.ec-img{width:100%;height:170px;object-fit:cover}
+.ec-ph{width:100%;height:170px;display:flex;align-items:center;justify-content:center;font-size:2.8rem;background:linear-gradient(135deg,#0c1830,#142140)}
+.ec-body{padding:1.1rem}
+.ec-date{font-size:.76rem;color:var(--teal);font-weight:600;margin-bottom:.35rem}
+.ec-title{font-weight:700;font-size:.95rem;margin-bottom:.55rem;line-height:1.4}
+.ec-desc{color:var(--mut);font-size:.83rem;line-height:1.6;margin-bottom:.9rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.ec-reg{display:inline-block;background:var(--org);color:#fff;padding:.38rem .9rem;border-radius:6px;font-size:.78rem;font-weight:700;text-decoration:none;transition:opacity var(--t)}
+.ec-reg:hover{opacity:.8}
+.pbadge{display:inline-block;background:rgba(148,163,184,.08);color:var(--mut);font-size:.68rem;font-weight:600;padding:.18rem .55rem;border-radius:4px;margin-bottom:.4rem;text-transform:uppercase}
+.no-ev{text-align:center;color:var(--dim);padding:3rem 1rem;grid-column:1/-1;font-size:.9rem}
+/* GALLERY */
+#gallery{background:var(--bg2)}
+.gg{columns:3;column-gap:1rem;gap:1rem}
+.gi{break-inside:avoid;margin-bottom:1rem;border-radius:var(--r);overflow:hidden;cursor:pointer;border:1px solid var(--brd);transition:transform var(--t)}
+.gi:hover{transform:scale(1.02)}
+.gi img{width:100%;display:block}
+.gi-cap{background:var(--card);padding:.5rem .75rem;font-size:.78rem;color:var(--mut)}
+.gph{height:160px;background:linear-gradient(135deg,var(--card),#0d1e35);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;color:var(--dim);font-size:.8rem}
+/* TEAM */
+.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1.25rem}
+.tc{background:var(--card);border:1px solid var(--brd);border-radius:var(--r);padding:1.5rem;text-align:center;transition:transform var(--t),border-color var(--t)}
+.tc:hover{transform:translateY(-3px);border-color:var(--teal)}
+.tav{width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid var(--org);margin:0 auto .9rem;display:flex;align-items:center;justify-content:center;font-size:1.6rem;background:var(--bg2);font-weight:700;color:var(--org)}
+.tc-name{font-weight:700;font-size:.9rem;margin-bottom:.3rem}
+.tc-role{color:var(--teal);font-size:.77rem;font-weight:600;margin-bottom:.25rem}
+.tc-dept{color:var(--dim);font-size:.73rem}
+.team-div{font-size:.72rem;font-weight:700;letter-spacing:.12em;color:var(--teal);text-transform:uppercase;margin:2rem 0 1rem;padding-bottom:.5rem;border-bottom:1px solid var(--brd)}
+/* CONTACT */
+#contact{background:var(--bg)}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.cjoin{background:linear-gradient(135deg,rgba(249,115,22,.12),rgba(20,184,166,.08));border:1px solid rgba(249,115,22,.25);border-radius:var(--r);padding:2.2rem;text-align:center}
+.cjoin h3{font-size:1.3rem;font-weight:800;margin-bottom:.65rem}
+.cjoin p{color:var(--mut);margin-bottom:1.4rem;line-height:1.6;font-size:.9rem}
+.btn-green{display:inline-flex;align-items:center;gap:.5rem;background:#25d366;color:#fff;padding:.75rem 1.8rem;border-radius:10px;font-weight:700;text-decoration:none;transition:transform var(--t);font-size:.95rem}
+.btn-green:hover{transform:translateY(-2px)}
+.cinfo h3{font-size:1.2rem;font-weight:700;margin-bottom:1.3rem}
+.ci{display:flex;gap:.9rem;margin-bottom:1.1rem;align-items:flex-start}
+.ci-icon{width:34px;height:34px;min-width:34px;border-radius:8px;background:rgba(249,115,22,.1);display:flex;align-items:center;justify-content:center;font-size:1rem}
+.ci-lbl{font-size:.76rem;color:var(--dim);margin-bottom:.15rem}
+.ci-val{color:var(--txt);font-size:.88rem}
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--brd);padding:1.8rem 1rem;text-align:center;color:var(--dim);font-size:.83rem}
+footer b{color:var(--org)}
+/* ADMIN FAB */
+.afab{position:fixed;bottom:1.8rem;right:1.8rem;width:42px;height:42px;border-radius:50%;background:var(--card);border:1px solid var(--brd);color:var(--dim);cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;z-index:150;transition:var(--t);opacity:.35}
+.afab:hover{opacity:1;border-color:var(--org);color:var(--org)}
+/* MODALS */
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:300;display:none;align-items:center;justify-content:center;padding:1rem}
+.ov.open{display:flex}
+.modal{background:var(--bg2);border:1px solid var(--brd);border-radius:16px;width:100%;max-width:620px;max-height:90vh;overflow-y:auto}
+.mh{display:flex;align-items:center;justify-content:space-between;padding:1.3rem 1.5rem;border-bottom:1px solid var(--brd)}
+.mh h2{font-size:1.1rem;font-weight:700}
+.mc-btn{background:none;border:none;color:var(--mut);cursor:pointer;font-size:1.6rem;line-height:1}
+.mb{padding:1.5rem}
+.atabs{display:flex;gap:.3rem;margin-bottom:1.4rem;border-bottom:1px solid var(--brd);padding-bottom:0}
+.atab{padding:.55rem 1.1rem;border:none;background:none;color:var(--mut);cursor:pointer;font-weight:600;font-size:.85rem;border-bottom:2px solid transparent;transition:var(--t);margin-bottom:-1px}
+.atab.act{color:var(--org);border-color:var(--org)}
+.fg{margin-bottom:1rem}
+.fg label{display:block;font-size:.82rem;color:var(--mut);margin-bottom:.35rem;font-weight:500}
+.fc{width:100%;background:var(--card);border:1px solid var(--brd);border-radius:8px;padding:.65rem .9rem;color:var(--txt);font-size:.88rem;transition:border-color var(--t);outline:none;font-family:inherit}
+.fc:focus{border-color:var(--org)}
+textarea.fc{resize:vertical;min-height:70px}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.bsub{background:linear-gradient(135deg,var(--org),var(--amb));color:#fff;padding:.65rem 1.4rem;border-radius:8px;border:none;font-weight:700;cursor:pointer;font-size:.9rem;transition:opacity var(--t)}
+.bsub:hover{opacity:.85}
+.bdel{background:rgba(239,68,68,.1);color:#ef4444;border:1px solid rgba(239,68,68,.25);padding:.35rem .75rem;border-radius:6px;cursor:pointer;font-size:.78rem;font-weight:600;transition:background var(--t)}
+.bdel:hover{background:rgba(239,68,68,.25)}
+.alist{display:flex;flex-direction:column;gap:.6rem;margin-top:1rem}
+.ai{background:var(--card);border:1px solid var(--brd);border-radius:8px;padding:.7rem 1rem;display:flex;justify-content:space-between;align-items:center;gap:.5rem}
+.ai-info{font-size:.83rem;min-width:0}
+.ai-t{font-weight:600;margin-bottom:.15rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ai-s{color:var(--mut);font-size:.76rem}
+.iprev{width:100%;height:130px;object-fit:cover;border-radius:8px;border:1px solid var(--brd);margin-top:.5rem;display:none}
+.msg{padding:.6rem .9rem;border-radius:8px;font-size:.83rem;margin-bottom:.9rem;display:none}
+.msg.ok{background:rgba(20,184,166,.1);border:1px solid rgba(20,184,166,.25);color:var(--teal)}
+.msg.err{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);color:#f87171}
+/* LIGHTBOX */
+.lbox{position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:400;display:none;align-items:center;justify-content:center}
+.lbox.open{display:flex}
+.lbox img{max-width:92vw;max-height:88vh;border-radius:8px}
+.lbox-x{position:absolute;top:1.2rem;right:1.5rem;color:#fff;font-size:2rem;cursor:pointer;background:none;border:none;line-height:1}
+/* RESPONSIVE */
+@media(max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}.st:nth-child(2){border-right:none}.cg{grid-template-columns:1fr}.gg{columns:2}}
+@media(max-width:680px){.nl,.btn-wa.nwa{display:none}.hbg{display:block}.fr{grid-template-columns:1fr}.gg{columns:1}}
+</style>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nc">
+    <a class="brand" id="brandBtn" href="#home">
+      <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="17,2 31,10 31,24 17,32 3,24 3,10" fill="none" stroke="#14b8a6" stroke-width="1.5"/>
+        <polygon points="17,6 27,12 27,22 17,28 7,22 7,12" fill="none" stroke="#f97316" stroke-width=".8" opacity=".5"/>
+        <circle cx="17" cy="15" r="4.5" fill="none" stroke="#f97316" stroke-width="1.5"/>
+        <line x1="17" y1="19.5" x2="17" y2="23" stroke="#f97316" stroke-width="1.5"/>
+        <line x1="15" y1="21" x2="19" y2="21" stroke="#f97316" stroke-width="1.2"/>
+        <circle cx="17" cy="15" r="1.2" fill="#fb923c"/>
+        <line x1="17" y1="9" x2="17" y2="11" stroke="#14b8a6" stroke-width="1"/>
+        <line x1="23" y1="12" x2="21.5" y2="13" stroke="#14b8a6" stroke-width="1"/>
+        <line x1="11" y1="12" x2="12.5" y2="13" stroke="#14b8a6" stroke-width="1"/>
+      </svg>
+      CREOVATORS CLUB
+    </a>
+    <ul class="nl">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="https://chat.whatsapp.com/Kg7Mf7k1slcLTTUKtKczgh" target="_blank" class="btn-wa nwa">Join Club</a>
+    <button class="hbg" id="hbg" onclick="toggleMob()">☰</button>
+  </div>
+  <div class="mob" id="mobMenu">
+    <a href="#home" onclick="closeMob()">Home</a>
+    <a href="#about" onclick="closeMob()">About</a>
+    <a href="#events" onclick="closeMob()">Events</a>
+    <a href="#gallery" onclick="closeMob()">Gallery</a>
+    <a href="#team" onclick="closeMob()">Team</a>
+    <a href="#contact" onclick="closeMob()">Contact</a>
+    <a href="https://chat.whatsapp.com/Kg7Mf7k1slcLTTUKtKczgh" target="_blank" class="btn-wa" style="display:inline-block;margin-top:.3rem">Join Club</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <canvas id="cvs"></canvas>
+  <div class="hi">
+    <div class="hbadge">Presidency University · Bengaluru</div>
+    <svg class="hlogo" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="60,6 108,33 108,87 60,114 12,87 12,33" fill="none" stroke="#14b8a6" stroke-width="2.5"/>
+      <polygon points="60,18 96,39 96,81 60,102 24,81 24,39" fill="none" stroke="#f97316" stroke-width="1.2" opacity=".4"/>
+      <circle cx="60" cy="52" r="18" fill="none" stroke="#f97316" stroke-width="2.5"/>
+      <line x1="60" y1="70" x2="60" y2="82" stroke="#f97316" stroke-width="2.5"/>
+      <line x1="52" y1="76" x2="68" y2="76" stroke="#f97316" stroke-width="2"/>
+      <line x1="54" y1="81" x2="66" y2="81" stroke="#f97316" stroke-width="2"/>
+      <circle cx="60" cy="52" r="5" fill="#fb923c"/>
+      <line x1="60" y1="28" x2="60" y2="34" stroke="#14b8a6" stroke-width="1.8"/>
+      <line x1="84" y1="42" x2="79" y2="45" stroke="#14b8a6" stroke-width="1.8"/>
+      <line x1="36" y1="42" x2="41" y2="45" stroke="#14b8a6" stroke-width="1.8"/>
+      <circle cx="60" cy="28" r="2.5" fill="#14b8a6" opacity=".7"/>
+      <circle cx="84" cy="42" r="2.5" fill="#14b8a6" opacity=".7"/>
+      <circle cx="36" cy="42" r="2.5" fill="#14b8a6" opacity=".7"/>
+    </svg>
+    <div class="htitle">CREOVATORS<br><span>CLUB</span></div>
+    <p class="hsub">Innovation & Collaboration — Where Ideas Become Reality<br>Presidency University, Bengaluru</p>
+    <div class="hbtns">
+      <a href="https://chat.whatsapp.com/Kg7Mf7k1slcLTTUKtKczgh" target="_blank" class="btn-p">Join the Club</a>
+      <a href="#events" class="btn-o">Our Events →</a>
+    </div>
+  </div>
+  <div class="sdwn">↓ scroll</div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="st"><div class="stn">6+</div><div class="stl">Events Conducted</div></div>
+  <div class="st"><div class="stn">100+</div><div class="stl">Active Members</div></div>
+  <div class="st"><div class="stn">2</div><div class="stl">Industrial Visits</div></div>
+  <div class="st"><div class="stn">2025</div><div class="stl">Year Founded</div></div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="sl">About the Club</div>
+    <h2 class="st2">Built on Innovation.<br>Driven by Collaboration.</h2>
+    <p class="sd">The Creovators Club at Presidency University fosters creativity, innovation, and entrepreneurship — equipping students with the skills and mindset to solve real-world problems through cutting-edge technology.</p>
+    <div class="ag">
+      <div class="ac">
+        <div class="ac-icon">🔭</div>
+        <h3>Vision</h3>
+        <p>To establish a vibrant community of innovators, makers, and thinkers, driving technological advancement and contributing to societal progress.</p>
+      </div>
+      <div class="ac">
+        <div class="ac-icon">🎯</div>
+        <h3>Mission</h3>
+        <p>To provide resources, mentorship, and opportunities for members to develop innovative solutions — promoting entrepreneurship, creativity, and collaboration.</p>
+      </div>
+      <div class="ac">
+        <div class="ac-icon">⚡</div>
+        <h3>Objective</h3>
+        <p>Provide a collaborative platform to ideate, design, and develop innovative solutions to real-world problems using cutting-edge technologies.</p>
+        <div class="tags">
+          <span class="tag">AI</span><span class="tag">IoT</span><span class="tag">Blockchain</span><span class="tag">Data Analytics</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section id="events">
+  <div class="container">
+    <div class="sl">Events</div>
+    <h2 class="st2">What We've Been Up To</h2>
+    <p class="sd">From technical seminars and industrial visits to ideathons — here's a look at everything Creovators Club has organised.</p>
+    <div class="etabs">
+      <button class="etab act" onclick="showTab('past',this)">Past Events</button>
+      <button class="etab" onclick="showTab('upcoming',this)">Upcoming Events</button>
+    </div>
+    <div class="eg" id="evGrid"></div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <div class="sl">Gallery</div>
+    <h2 class="st2">Moments & Memories</h2>
+    <p class="sd">A glimpse into our events, visits, and club activities. Admins can upload photos directly from the admin panel.</p>
+    <div class="gg" id="galGrid"></div>
+    <p id="galEmpty" style="display:none;color:var(--dim);font-size:.9rem;text-align:center;padding:3rem 0">No gallery photos yet. Admin can add images from the panel.</p>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="container">
+    <div class="sl">Our Team</div>
+    <h2 class="st2">The People Behind the Club</h2>
+    <p class="sd">Meet our faculty conveners, coordinators, and student leaders driving the Creovators Club forward.</p>
+    <div class="team-div">Faculty</div>
+    <div class="tg" id="facultyGrid"></div>
+    <div class="team-div" style="margin-top:2.5rem">Student Coordinators</div>
+    <div class="tg" id="studentGrid"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="sl">Contact & Join</div>
+    <h2 class="st2">Become a Creovator</h2>
+    <div class="cg">
+      <div class="cjoin">
+        <div style="font-size:2.5rem;margin-bottom:.8rem">🚀</div>
+        <h3>Join the WhatsApp Community</h3>
+        <p>Connect with fellow innovators, get event updates, and be part of the Creovators Club group. Click below to join instantly!</p>
+        <a href="https://chat.whatsapp.com/Kg7Mf7k1slcLTTUKtKczgh" target="_blank" class="btn-green">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.555 4.122 1.526 5.855L.057 23.882a.5.5 0 0 0 .612.612l6.085-1.595A11.932 11.932 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.933 0-3.74-.521-5.287-1.428l-.379-.222-3.934 1.031 1.048-3.826-.243-.394A9.965 9.965 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          Join WhatsApp Group
+        </a>
+      </div>
+      <div class="cinfo">
+        <h3>Get in Touch</h3>
+        <div class="ci">
+          <div class="ci-icon">🏛️</div>
+          <div><div class="ci-lbl">University</div><div class="ci-val">Presidency University, Bengaluru</div></div>
+        </div>
+        <div class="ci">
+          <div class="ci-icon">📍</div>
+          <div><div class="ci-lbl">Location</div><div class="ci-val">Ittagallipura, Rajanukunte, Bengaluru – 560064</div></div>
+        </div>
+        <div class="ci">
+          <div class="ci-icon">👨‍🏫</div>
+          <div><div class="ci-lbl">Convener</div><div class="ci-val">Dr. Robin Rohit Vincent<br><span style="color:var(--dim);font-size:.8rem">Professor & HOD, PSCS</span></div></div>
+        </div>
+        <div class="ci">
+          <div class="ci-icon">📞</div>
+          <div><div class="ci-lbl">Student Coordinators</div>
+            <div class="ci-val">Manoj H G: +91 79753 01048<br>Laeeqah Masood: +91 89510 60779<br>Meer Mohammed Shoaib: +91 70199 56008</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <b>Creovators Club</b> · Presidency University, Bengaluru &nbsp;|&nbsp; Under <b>OSR</b> &nbsp;|&nbsp; Innovation & Collaboration</p>
+  <p style="margin-top:.4rem;font-size:.76rem">Made with 💡 by Creovators</p>
+</footer>
+
+<!-- ADMIN FAB -->
+<button class="afab" id="adminFab" title="Admin Login" onclick="openAdmin()">⚙</button>
+
+<!-- ADMIN MODAL -->
+<div class="ov" id="adminOv">
+  <div class="modal">
+    <div class="mh">
+      <h2>⚙ Admin Panel</h2>
+      <button class="mc-btn" onclick="closeAdmin()">×</button>
+    </div>
+    <div class="mb">
+      <div id="adminLogin">
+        <p style="color:var(--mut);font-size:.88rem;margin-bottom:1rem">Enter admin password to continue.</p>
+        <div class="fg"><label>Password</label><input type="password" class="fc" id="pwdInput" placeholder="Enter password" onkeydown="if(event.key==='Enter')checkPwd()"></div>
+        <div class="msg" id="pwdMsg"></div>
+        <button class="bsub" onclick="checkPwd()">Login</button>
+      </div>
+      <div id="adminPanel" style="display:none">
+        <div class="atabs">
+          <button class="atab act" onclick="aTab('ev',this)">Events</button>
+          <button class="atab" onclick="aTab('gal',this)">Gallery</button>
+          <button class="atab" onclick="aTab('team',this)">Team</button>
+        </div>
+        <!-- EVENTS PANEL -->
+        <div id="aEv">
+          <div class="msg" id="evMsg"></div>
+          <h3 style="font-size:.95rem;margin-bottom:1rem">Add New Event</h3>
+          <div class="fg"><label>Title *</label><input class="fc" id="aEvTitle" placeholder="Event name"></div>
+          <div class="fr">
+            <div class="fg"><label>Date *</label><input type="date" class="fc" id="aEvDate"></div>
+            <div class="fg"><label>Type</label>
+              <select class="fc" id="aEvType"><option value="upcoming">Upcoming</option><option value="past">Past</option></select>
+            </div>
+          </div>
+          <div class="fg"><label>Description</label><textarea class="fc" id="aEvDesc" placeholder="Brief description of the event"></textarea></div>
+          <div class="fg"><label>Registration Link</label><input class="fc" id="aEvReg" placeholder="https://..."></div>
+          <div class="fg"><label>Event Image (optional)</label><input type="file" class="fc" id="aEvImg" accept="image/*" onchange="prevImg(this,'aEvPrev')"><img class="iprev" id="aEvPrev"></div>
+          <button class="bsub" onclick="addEvent()">Add Event</button>
+          <div class="alist" id="aEvList"></div>
+        </div>
+        <!-- GALLERY PANEL -->
+        <div id="aGal" style="display:none">
+          <div class="msg" id="galMsg"></div>
+          <h3 style="font-size:.95rem;margin-bottom:1rem">Add Gallery Photo</h3>
+          <div class="fg"><label>Image *</label><input type="file" class="fc" id="aGalImg" accept="image/*" onchange="prevImg(this,'aGalPrev')"><img class="iprev" id="aGalPrev"></div>
+          <div class="fg"><label>Caption</label><input class="fc" id="aGalCap" placeholder="Photo caption (optional)"></div>
+          <button class="bsub" onclick="addGallery()">Upload Photo</button>
+          <div class="alist" id="aGalList"></div>
+        </div>
+        <!-- TEAM PANEL -->
+        <div id="aTeam" style="display:none">
+          <div class="msg" id="teamMsg"></div>
+          <h3 style="font-size:.95rem;margin-bottom:1rem">Add Team Member</h3>
+          <div class="fr">
+            <div class="fg"><label>Name *</label><input class="fc" id="aTmName" placeholder="Full name"></div>
+            <div class="fg"><label>Role *</label><input class="fc" id="aTmRole" placeholder="e.g. President"></div>
+          </div>
+          <div class="fr">
+            <div class="fg"><label>Department</label><input class="fc" id="aTmDept" placeholder="PSCS, PSIS..."></div>
+            <div class="fg"><label>Category</label>
+              <select class="fc" id="aTmCat"><option value="student">Student</option><option value="faculty">Faculty</option></select>
+            </div>
+          </div>
+          <div class="fg"><label>Photo (optional)</label><input type="file" class="fc" id="aTmImg" accept="image/*" onchange="prevImg(this,'aTmPrev')"><img class="iprev" id="aTmPrev"></div>
+          <button class="bsub" onclick="addMember()">Add Member</button>
+          <div class="alist" id="aTmList"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lbox" id="lbox" onclick="closeLbox()">
+  <button class="lbox-x" onclick="closeLbox()">×</button>
+  <img id="lboxImg" src="" alt="Gallery photo">
+</div>
+
+<script>
+const PWD = 'Creovators@2025';
+
+const BASE_EVENTS = [
+  {id:'b1',title:'Inauguration',date:'2025-03-29',type:'past',icon:'🎉',desc:'Official launch of the Creovators Club with Chief Guest Dr. Madhan Kumar Srinivasan (CEO, WiseWork & 5x Founder). Convener: Dr. Robin Rohit Vincent.',reg:''},
+  {id:'b2',title:'Navigating the Future: Key Tech Trends Shaping 2025',date:'2025-04-28',type:'past',icon:'🚀',desc:'Session on emerging technology trends by Mr. Ramesh Babu K M, Senior Engineering Manager at Procore. F Block Seminar Hall 2, 2:30–4:15 PM.',reg:''},
+  {id:'b3',title:'TVS Industrial Visit',date:'2025-05-12',type:'past',icon:'🏭',desc:'Industrial visit to TVS Plant, Hosur, Tamil Nadu. Members explored manufacturing automation and cutting-edge production technologies.',reg:''},
+  {id:'b4',title:'Entrepreneurial Mindset: From Ideas to Impact',date:'2025-10-15',type:'past',icon:'💡',desc:'Seminar on entrepreneurial thinking, growth mindset, and how to transform ideas into real-world impact at scale.',reg:''},
+  {id:'b5',title:'Ideathon',date:'2025-10-29',type:'past',icon:'🧠',desc:'Intensive ideation challenge where teams brainstormed and pitched innovative solutions to real-world challenges using technology.',reg:''},
+  {id:'b6',title:'Level Up on LinkedIn: From Profile to Opportunities',date:'2025-11-05',type:'past',icon:'💼',desc:'Workshop by Ananya Agrawal, Software Development Engineer at JP Morgan. LinkedIn profile optimisation, personal branding, and career growth strategies.',reg:''},
+];
+
+const BASE_FACULTY = [
+  {id:'f1',name:'Dr. Robin Rohit Vincent',role:'Convener',dept:'Professor & HOD, PSCS',img:null,cat:'faculty'},
+  {id:'f2',name:'Dr. Kuppala Saritha',role:'Club Coordinator',dept:'Professor, PSIS',img:null,cat:'faculty'},
+  {id:'f3',name:'Mr. Likhith S R',role:'Club Coordinator',dept:'Asst. Professor, PSCS',img:null,cat:'faculty'},
+];
+const BASE_STUDENTS = [
+  {id:'s3',name:'Manoj H G',role:'President',dept:'CSE',img:null,cat:'student'},
+  {id:'s1',name:'Laeewah Masood',role:'Vice',dept:'CAI',img:null,cat:'student'},
+  {id:'s2',name:'Meer Mohammed Shoaib',role:'Heart',dept:'CSE',img:null,cat:'student'},
+
+];
+
+let extraEvents=[],galleryData=[],extraTeam=[],curTab='past';
+
+function fmt(d){if(!d)return'';const[y,m,da]=d.split('-');const mn=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];return `${parseInt(da)} ${mn[parseInt(m)-1]} ${y}`}
+function initials(n){return n.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase()}
+
+async function init(){
+  try{
+    const r1=await window.storage.get('creo_events');
+    if(r1)extraEvents=JSON.parse(r1.value);
+  }catch(e){}
+  try{
+    const r2=await window.storage.get('creo_gallery');
+    if(r2)galleryData=JSON.parse(r2.value);
+  }catch(e){}
+  try{
+    const r3=await window.storage.get('creo_team');
+    if(r3)extraTeam=JSON.parse(r3.value);
+  }catch(e){}
+  // Load gallery images
+  for(let g of galleryData){
+    try{
+      const r=await window.storage.get('creo_gimg_'+g.id);
+      if(r)g.img=r.value;
+    }catch(e){}
+  }
+  // Load event images
+  for(let e of extraEvents){
+    try{
+      const r=await window.storage.get('creo_eimg_'+e.id);
+      if(r)e.img=r.value;
+    }catch(e2){}
+  }
+  // Load team photos
+  for(let t of extraTeam){
+    try{
+      const r=await window.storage.get('creo_timg_'+t.id);
+      if(r)t.img=r.value;
+    }catch(e){}
+  }
+  renderEvents();renderGallery();renderTeam();
+  renderAdminLists();
+}
+
+function showTab(tab,el){
+  curTab=tab;
+  document.querySelectorAll('.etab').forEach(b=>b.classList.remove('act'));
+  el.classList.add('act');
+  renderEvents();
+}
+
+function renderEvents(){
+  const all=[...BASE_EVENTS,...extraEvents];
+  const filtered=all.filter(e=>e.type===curTab).sort((a,b)=>new Date(b.date)-new Date(a.date));
+  const g=document.getElementById('evGrid');
+  if(!filtered.length){g.innerHTML=`<div class="no-ev">No ${curTab} events yet.</div>`;return;}
+  g.innerHTML=filtered.map(e=>`
+    <div class="ec">
+      ${e.img?`<img class="ec-img" src="${e.img}" alt="${e.title}">`:`<div class="ec-ph">${e.icon||'📅'}</div>`}
+      <div class="ec-body">
+        ${e.type==='past'?'<div class="pbadge">Past Event</div>':''}
+        <div class="ec-date">${fmt(e.date)}</div>
+        <div class="ec-title">${e.title}</div>
+        <div class="ec-desc">${e.desc||''}</div>
+        ${e.reg?`<a href="${e.reg}" target="_blank" class="ec-reg">Register Now</a>`:(e.type==='upcoming'?`<span style="color:var(--dim);font-size:.8rem">Details coming soon</span>`:'')}
+      </div>
+    </div>`).join('');
+}
+
+function renderGallery(){
+  const g=document.getElementById('galGrid');
+  const e=document.getElementById('galEmpty');
+  if(!galleryData.length){g.innerHTML='';e.style.display='block';return;}
+  e.style.display='none';
+  g.innerHTML=galleryData.map(i=>`
+    <div class="gi" onclick="openLbox('${i.img}')">
+      ${i.img?`<img src="${i.img}" alt="${i.caption||'Gallery photo'}" loading="lazy">`:`<div class="gph">📸<span>${i.caption||'Photo'}</span></div>`}
+      ${i.caption?`<div class="gi-cap">${i.caption}</div>`:''}
+    </div>`).join('');
+}
+
+function renderTeam(){
+  const fac=[...BASE_FACULTY,...extraTeam.filter(t=>t.cat==='faculty')];
+  const stu=[...BASE_STUDENTS,...extraTeam.filter(t=>t.cat==='student')];
+  const renderCards=(arr,el)=>{
+    document.getElementById(el).innerHTML=arr.map(t=>`
+      <div class="tc">
+        ${t.img?`<img class="tav" src="${t.img}" alt="${t.name}">`:`<div class="tav">${initials(t.name)}</div>`}
+        <div class="tc-name">${t.name}</div>
+        <div class="tc-role">${t.role}</div>
+        ${t.dept?`<div class="tc-dept">${t.dept}</div>`:''}
+      </div>`).join('');
+  };
+  renderCards(fac,'facultyGrid');
+  renderCards(stu,'studentGrid');
+}
+
+// IMAGE RESIZE
+async function resizeImg(file,maxW=800){
+  return new Promise(res=>{
+    const r=new FileReader();
+    r.onload=ev=>{
+      const img=new Image();
+      img.onload=()=>{
+        const sc=Math.min(1,maxW/img.width);
+        const c=document.createElement('canvas');
+        c.width=img.width*sc;c.height=img.height*sc;
+        c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+        res(c.toDataURL('image/jpeg',.72));
+      };img.src=ev.target.result;
+    };r.readAsDataURL(file);
+  });
+}
+
+function prevImg(inp,prevId){
+  const prev=document.getElementById(prevId);
+  if(!inp.files[0]){prev.style.display='none';return;}
+  const r=new FileReader();
+  r.onload=e=>{prev.src=e.target.result;prev.style.display='block';};
+  r.readAsDataURL(inp.files[0]);
+}
+
+// ADMIN
+function openAdmin(){document.getElementById('adminOv').classList.add('open')}
+function closeAdmin(){document.getElementById('adminOv').classList.remove('open')}
+
+function checkPwd(){
+  const v=document.getElementById('pwdInput').value;
+  const m=document.getElementById('pwdMsg');
+  if(v===PWD){
+    document.getElementById('adminLogin').style.display='none';
+    document.getElementById('adminPanel').style.display='block';
+    showMsg('','','pwdMsg');
+  }else{
+    m.textContent='Incorrect password.';m.className='msg err';m.style.display='block';
+  }
+}
+
+function aTab(tab,el){
+  document.querySelectorAll('.atab').forEach(b=>b.classList.remove('act'));
+  el.classList.add('act');
+  ['aEv','aGal','aTeam'].forEach(id=>document.getElementById(id).style.display='none');
+  const map={ev:'aEv',gal:'aGal',team:'aTeam'};
+  document.getElementById(map[tab]).style.display='block';
+}
+
+function showMsg(txt,type,id){
+  const m=document.getElementById(id);
+  if(!txt){m.style.display='none';return;}
+  m.textContent=txt;m.className='msg '+(type||'ok');m.style.display='block';
+  setTimeout(()=>m.style.display='none',3000);
+}
+
+async function addEvent(){
+  const title=document.getElementById('aEvTitle').value.trim();
+  const date=document.getElementById('aEvDate').value;
+  if(!title||!date){showMsg('Title and date are required.','err','evMsg');return;}
+  const ev={id:'e'+Date.now(),title,date,type:document.getElementById('aEvType').value,
+    desc:document.getElementById('aEvDesc').value.trim(),
+    reg:document.getElementById('aEvReg').value.trim(),icon:'📅',img:null};
+  const imgFile=document.getElementById('aEvImg').files[0];
+  if(imgFile){
+    const b64=await resizeImg(imgFile);ev.img=b64;
+    try{await window.storage.set('creo_eimg_'+ev.id,b64);}catch(e){}
+  }
+  extraEvents.push(ev);
+  try{await window.storage.set('creo_events',JSON.stringify(extraEvents.map(e=>({...e,img:null}))));}catch(e){}
+  ['aEvTitle','aEvDate','aEvDesc','aEvReg'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('aEvImg').value='';document.getElementById('aEvPrev').style.display='none';
+  renderEvents();renderAdminLists();
+  showMsg('Event added!','ok','evMsg');
+}
+
+async function addGallery(){
+  const imgFile=document.getElementById('aGalImg').files[0];
+  if(!imgFile){showMsg('Please select an image.','err','galMsg');return;}
+  const cap=document.getElementById('aGalCap').value.trim();
+  const g={id:'g'+Date.now(),caption:cap,img:null};
+  const b64=await resizeImg(imgFile,1000);g.img=b64;
+  try{await window.storage.set('creo_gimg_'+g.id,b64);}catch(e){}
+  galleryData.push(g);
+  try{await window.storage.set('creo_gallery',JSON.stringify(galleryData.map(x=>({...x,img:null}))));}catch(e){}
+  document.getElementById('aGalImg').value='';document.getElementById('aGalCap').value='';
+  document.getElementById('aGalPrev').style.display='none';
+  renderGallery();renderAdminLists();
+  showMsg('Photo uploaded!','ok','galMsg');
+}
+
+async function addMember(){
+  const name=document.getElementById('aTmName').value.trim();
+  const role=document.getElementById('aTmRole').value.trim();
+  if(!name||!role){showMsg('Name and role are required.','err','teamMsg');return;}
+  const m={id:'t'+Date.now(),name,role,dept:document.getElementById('aTmDept').value.trim(),
+    cat:document.getElementById('aTmCat').value,img:null};
+  const imgFile=document.getElementById('aTmImg').files[0];
+  if(imgFile){
+    const b64=await resizeImg(imgFile,400);m.img=b64;
+    try{await window.storage.set('creo_timg_'+m.id,b64);}catch(e){}
+  }
+  extraTeam.push(m);
+  try{await window.storage.set('creo_team',JSON.stringify(extraTeam.map(t=>({...t,img:null}))));}catch(e){}
+  ['aTmName','aTmRole','aTmDept'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('aTmImg').value='';document.getElementById('aTmPrev').style.display='none';
+  renderTeam();renderAdminLists();
+  showMsg('Member added!','ok','teamMsg');
+}
+
+async function delEvent(id){
+  extraEvents=extraEvents.filter(e=>e.id!==id);
+  try{
+    await window.storage.set('creo_events',JSON.stringify(extraEvents.map(e=>({...e,img:null}))));
+    await window.storage.delete('creo_eimg_'+id);
+  }catch(e){}
+  renderEvents();renderAdminLists();
+}
+
+async function delGallery(id){
+  galleryData=galleryData.filter(g=>g.id!==id);
+  try{
+    await window.storage.set('creo_gallery',JSON.stringify(galleryData.map(x=>({...x,img:null}))));
+    await window.storage.delete('creo_gimg_'+id);
+  }catch(e){}
+  renderGallery();renderAdminLists();
+}
+
+async function delMember(id){
+  extraTeam=extraTeam.filter(t=>t.id!==id);
+  try{
+    await window.storage.set('creo_team',JSON.stringify(extraTeam.map(t=>({...t,img:null}))));
+    await window.storage.delete('creo_timg_'+id);
+  }catch(e){}
+  renderTeam();renderAdminLists();
+}
+
+function renderAdminLists(){
+  document.getElementById('aEvList').innerHTML=
+    `<div style="font-size:.8rem;color:var(--dim);margin-bottom:.4rem">Admin-added events (${extraEvents.length})</div>`+
+    extraEvents.map(e=>`<div class="ai"><div class="ai-info"><div class="ai-t">${e.title}</div><div class="ai-s">${fmt(e.date)} · ${e.type}</div></div><button class="bdel" onclick="delEvent('${e.id}')">Delete</button></div>`).join('');
+  document.getElementById('aGalList').innerHTML=
+    `<div style="font-size:.8rem;color:var(--dim);margin-bottom:.4rem">Gallery photos (${galleryData.length})</div>`+
+    galleryData.map(g=>`<div class="ai"><div class="ai-info"><div class="ai-t">${g.caption||'(no caption)'}</div></div><button class="bdel" onclick="delGallery('${g.id}')">Delete</button></div>`).join('');
+  document.getElementById('aTmList').innerHTML=
+    `<div style="font-size:.8rem;color:var(--dim);margin-bottom:.4rem">Added members (${extraTeam.length})</div>`+
+    extraTeam.map(t=>`<div class="ai"><div class="ai-info"><div class="ai-t">${t.name}</div><div class="ai-s">${t.role} · ${t.cat}</div></div><button class="bdel" onclick="delMember('${t.id}')">Delete</button></div>`).join('');
+}
+
+// LIGHTBOX
+function openLbox(src){if(!src)return;document.getElementById('lboxImg').src=src;document.getElementById('lbox').classList.add('open')}
+function closeLbox(){document.getElementById('lbox').classList.remove('open')}
+
+// MOBILE NAV
+function toggleMob(){document.getElementById('mobMenu').classList.toggle('open')}
+function closeMob(){document.getElementById('mobMenu').classList.remove('open')}
+
+// CANVAS PARTICLES
+(function(){
+  const c=document.getElementById('cvs');
+  const ctx=c.getContext('2d');
+  let W,H,pts=[];
+  function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight}
+  resize();window.addEventListener('resize',resize);
+  function mkPts(){pts=[];for(let i=0;i<80;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:Math.random()*1.5+.5})}
+  mkPts();
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle='rgba(249,115,22,.6)';
+    for(let p of pts){
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();
+    }
+    ctx.strokeStyle='rgba(20,184,166,.12)';ctx.lineWidth=.6;
+    for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){
+      const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);
+      if(d<120){ctx.globalAlpha=1-d/120;ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.stroke();}
+    }
+    ctx.globalAlpha=1;
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// NAV ACTIVE LINK
+window.addEventListener('scroll',()=>{
+  const secs=['home','about','events','gallery','team','contact'];
+  let cur='home';
+  for(const id of secs){
+    const el=document.getElementById(id);
+    if(el&&window.scrollY>=el.offsetTop-80)cur=id;
+  }
+  document.querySelectorAll('.nl a').forEach(a=>{
+    a.classList.toggle('act',a.getAttribute('href')==='#'+cur);
+  });
+});
+
+// INIT
+init();
+</script>
